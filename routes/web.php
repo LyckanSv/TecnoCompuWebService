@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
+    return view('welcome');
+});
 
 Route::get('/dev', function () {
     return view('home');
