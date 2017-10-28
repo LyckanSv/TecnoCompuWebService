@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+})->middleware('auth');
+
+Route::get('/dev', function () {
+    return view('home');
 });
 
 Auth::routes();

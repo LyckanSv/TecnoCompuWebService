@@ -28,9 +28,27 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="{{ asset('vendors/jquery-slimscroll/jquery.slimscroll.min.js' )}}"></script>
 <!-- FastClick -->
 <script src="{{ asset('vendors/fastclick/lib/fastclick.js' )}}"></script>
+
+<script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js' )}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('js/pages/dashboard.js' )}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('js/demo.js' )}}"></script>
+
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>

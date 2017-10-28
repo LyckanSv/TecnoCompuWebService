@@ -1,41 +1,62 @@
 <ul class="sidebar-menu" data-widget="tree">
   {{-- Titulo del menu --}}
-  <li class="header">MAIN NAVIGATION</li>
+  <li class="header">Menu Principal</li>
 
-  {{-- Menu 1 --}}
-  <li class="active treeview">
+  {{-- Menu Home --}}
+
+  <li class="treeview">
     <a href="#">
-      <i class="fa fa-dashboard"></i> <span>Menu 1</span>
+      <i class="fa fa-home"></i> 
+      <span>Inicio</span>
+    </a>
+  </li>
+
+  {{-- Menu Productos  --}}
+  <li class="treeview">
+    <a href="#">
+      <i class="fa fa-laptop"></i> 
+      <span>Productos</span>
       <span class="pull-right-container">
         <i class="fa fa-angle-left pull-right"></i>
       </span>
     </a>
     <ul class="treeview-menu">
-      <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Opcion 1</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Opcion 2</a></li>
+      <li class="#"><a href="#"><i class="fa fa-plus"></i> Crear {{url()->current()}}</a></li>
+      <li class="#"><a href="#"><i class="fa fa-search"></i> Buscar </a></li>
+      <li class="#"><a href="#"><i class="fa fa-pencil-square-o "></i> Editar </a></li>
     </ul>
   </li>
 
-  {{-- Menu 2  --}}
+    {{-- Menu Promociones  --}}
   <li class="treeview">
     <a href="#">
-      <i class="fa fa-files-o"></i>
-      <span>Menu 2</span>
+      <i class="fa fa-tags"></i> 
+      <span>Promociones</span>
       <span class="pull-right-container">
-        <span class="label label-primary pull-right">4</span>
+        <i class="fa fa-angle-left pull-right"></i>
       </span>
     </a>
     <ul class="treeview-menu">
-      <li><a href="#"><i class="fa fa-circle-o"></i>Opcion 1</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Opcion 2</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Opcion 3</a></li>
-      <li><a href="#"><i class="fa fa-circle-o"></i> Opcion 4</a></li>
+      <li class="#"><a href="#"><i class="fa fa-plus"></i> Crear </a></li>
+      <li class="#"><a href="#"><i class="fa fa-search"></i> Buscar </a></li>
+      <li class="#"><a href="#"><i class="fa fa-pencil-square-o "></i> Editar </a></li>
     </ul>
   </li>
 
-  {{-- Menu 3 --}}
-  <li><a href="4"><i class="fa fa-book"></i> <span>Menu 3</span></a></li>
-
-  {{-- Menu 4 --}}
-  <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Menu 4</span></a></li>
+    {{-- Menu Usuarios  --}}
+  <li class="treeview">
+    <a href="#">
+      <i class="fa fa-users"></i> 
+      <span>Usuarios</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">
+      <li class="#"><a href="#"><i class="fa fa-plus"></i> Crear </a></li>
+      <li class="#"><a href="#"><i class="fa fa-search"></i> Buscar </a></li>
+      <li class="#"><a href="#"><i class="fa fa-pencil-square-o "></i> Editar </a></li>
+    </ul>
+  </li>
+  
 </ul>
