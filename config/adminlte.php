@@ -108,80 +108,83 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Inicio',
+            'url'         => '/dev',
+            'icon'        => 'home',
         ],
+
         [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Anilisis de Datos',
+            'url'         => '#',
+            'icon'        => 'line-chart',
         ],
-        'ACCOUNT SETTINGS',
+    
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
+            'text'    => 'Productos',
+            'icon'    => 'folder',
             'submenu' => [
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Agregar',
+                    'url'  => '/products/add',
+                    'icon' => 'plus',
                 ],
                 [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'text' => 'Editar',
+                    'url'  => '/products/edit',
+                    'icon' => 'pencil',
                 ],
                 [
-                    'text' => 'Level One',
-                    'url'  => '#',
+                    'text' => 'Ver',
+                    'url'  => '/products/show',
+                    'icon' => 'search',
                 ],
             ],
         ],
-        'LABELS',
+
         [
-            'text'       => 'Important',
-            'icon_color' => 'red',
+            'text'    => 'Promociones',
+            'icon'    => 'tag',
+            'submenu' => [
+                [
+                    'text' => 'Agregar',
+                    'url'  => '/deals/add',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => 'Editar',
+                    'url'  => '/deals/edit',
+                    'icon' => 'pencil',
+                ],
+                [
+                    'text' => 'Ver',
+                    'url'  => '/deals/show',
+                    'icon' => 'search',
+                ],
+            ],
         ],
+
         [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
+            'text'    => 'Usuarios',
+            'icon'    => 'users',
+            'submenu' => [
+                [
+                    'text' => 'Agregar',
+                    'url'  => '/users/add',
+                    'icon' => 'plus',
+                ],
+                [
+                    'text' => 'Editar',
+                    'url'  => '/users/edit',
+                    'icon' => 'pencil',
+                ],
+                [
+                    'text' => 'Ver',
+                    'url'  => '/users/show',
+                    'icon' => 'search',
+                ],
+            ],
         ],
     ],
 
