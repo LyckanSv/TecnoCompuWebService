@@ -64,12 +64,12 @@
             </div>
 
 
-            <div class="form-group{{ $errors->has('manofacturerName') ? ' has-error' : '' }}">
-                <label for="manofacturerName">Nuevo fabricante</label>
-                <input type="text" class="form-control" id="manofacturerName" name="manufacturer_name" placeholder="Nombre del fabricante del producto" disabled>
-                @if ($errors->has('manofacturerName'))
+            <div class="form-group{{ $errors->has('manufacturerName') ? ' has-error' : '' }}">
+                <label for="manufacturerName">Nuevo fabricante</label>
+                <input type="text" class="form-control" id="manufacturerName" name="manufacturer_name" placeholder="Nombre del fabricante del producto" disabled>
+                @if ($errors->has('manufacturerName'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('manofacturerName') }}</strong>
+                    <strong>{{ $errors->first('manufacturerName') }}</strong>
                 </span>
                 @endif
             </div>
@@ -85,7 +85,7 @@
             </div>
             
             <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                <label for="image">Imagen del producto</label>
+                <label for="image">Imagen del productos</label>
                 <input type="file" id="image" name="image">
                 <p class="help-block">Seleccione una imagen del producto</p>
                 @if ($errors->has('image'))
@@ -112,7 +112,12 @@
 
 @section('js')
 <script>
-var seleccion = $('#fabricante').value;
+var seleccion = $('#fabricantes').value;
+if( seleccion === "Nuevo fabricante"){
+    $('#manufacturerName').prop("disabled", false);
+}
+
+
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2();
@@ -122,10 +127,10 @@ var seleccion = $('#fabricante').value;
 
         if(this.value === "Nuevo fabricante"){
             console.log('desactive');
-            $('#manofacturerName').prop("disabled", false);
+            $('#manufacturerName').prop("disabled", false);
         }else{
             console.log('active');
-            $('#manofacturerName').prop("disabled", true);
+            $('#manufacturerName').prop("disabled", true);
         }
     })
     
