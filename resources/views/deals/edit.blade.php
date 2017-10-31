@@ -17,11 +17,10 @@
             <table id="dealsTable" class="table table-bordered table-striped">
                 <thead> 
                     <tr>
-                        <th>Nombre</th>
-                        <th>Fabricante</th>
-                        <th>Codigo</th>
+                        <th>Id</th>
+                        <th>Titulo</th>
+                        <th>Subtitulo</th>
                         <th>Descripcion</th>
-                        <th>Busquedas</th>
                         <th>Likes</th>
                         <th>Opciones</th>
                     </tr>
@@ -29,11 +28,10 @@
                     
                 <tbody>
                     <tr>
-                        <td>Nombre</td>
-                        <td>Fabricante</td>
-                        <td>Codigo</td>
+                        <td>1</td>
+                        <td>Titulo</td>
+                        <td>Subtitulo</td>
                         <td>Descripcion</td>
-                        <td>Busquedas</td>
                         <td>Likes</td>
                         <td>
                             <a href="#" class="btn btn-primary"> Editar </a>
@@ -45,13 +43,12 @@
                     
                 <tfoot>
                     <tr>
-                    <th>Nombre</th>
-                    <th>Fabricante</th>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Busquedas</th>
-                    <th>Likes</th>
-                    <th>Opciones</th>
+                        <th>Id</th>
+                        <th>Titulo</th>
+                        <th>Subtitulo</th>
+                        <th>Descripcion</th>
+                        <th>Likes</th>
+                        <th>Opciones</th>
                     </tr>
                 </tfoot>
 

@@ -16,35 +16,29 @@
             <table id="userTable" class="table table-bordered table-striped">
                 <thead> 
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
-                        <th>Fabricante</th>
-                        <th>Codigo</th>
-                        <th>Descripcion</th>
-                        <th>Busquedas</th>
-                        <th>Likes</th>
+                        <th>Correo</th>
+                        <th>Tipo de usuarios</th>
                     </tr>
                 </thead>
                     
                 <tbody>
                     <tr>
+                        <td>1</td>
                         <td>Nombre</td>
-                        <td>Fabricante</td>
-                        <td>Codigo</td>
-                        <td>Descripcion</td>
-                        <td>Busquedas</td>
-                        <td>Likes</td>
+                        <td>Correo</td>
+                        <td>Tipo de usuarios</td>
                     </tr>
                         
                 </tbody>
                     
                 <tfoot>
                     <tr>
-                    <th>Nombre</th>
-                    <th>Fabricante</th>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Busquedas</th>
-                    <th>Likes</th>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Tipo de usuarios</th>
                     </tr>
                 </tfoot>
 

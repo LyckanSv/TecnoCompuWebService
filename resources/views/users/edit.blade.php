@@ -17,24 +17,20 @@
             <table id="userTable" class="table table-bordered table-striped">
                 <thead> 
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
-                        <th>Fabricante</th>
-                        <th>Codigo</th>
-                        <th>Descripcion</th>
-                        <th>Busquedas</th>
-                        <th>Likes</th>
+                        <th>Correo</th>
+                        <th>Tipo de usuarios</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                     
                 <tbody>
                     <tr>
+                        <td>1</td>
                         <td>Nombre</td>
-                        <td>Fabricante</td>
-                        <td>Codigo</td>
-                        <td>Descripcion</td>
-                        <td>Busquedas</td>
-                        <td>Likes</td>
+                        <td>Correo</td>
+                        <td>Tipo de usuario</td>
                         <td>
                             <a href="#" class="btn btn-primary"> Editar </a>
                             <a href="#" class="btn btn-danger"> Borrar </a>
@@ -45,13 +41,11 @@
                     
                 <tfoot>
                     <tr>
-                    <th>Nombre</th>
-                    <th>Fabricante</th>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Busquedas</th>
-                    <th>Likes</th>
-                    <th>Opciones</th>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Tipo de usuarios</th>
+                        <th>Opciones</th>
                     </tr>
                 </tfoot>
 

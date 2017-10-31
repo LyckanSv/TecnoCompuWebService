@@ -16,44 +16,29 @@
 
     <form role="form">
         <div class="box-body">
+            
             <div class="form-group">
-                <label for="">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Laptop Dell Inspiron">
+                <label for="title">Titulo</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Grandes descuentos">
+            </div>
+
+            <div class="form-group">
+                <label for="subtitle">Subtitulo</label>
+                <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Es el tiempo de regalos">
             </div>
 
             <div class="form-group">
                   <label>Descripcion</label>
-                  <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripcion del producto (Caracteristicas tecnicas, visuales, contenido del producto, etc )"></textarea>
+                  <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripcion de la oferta"></textarea>
             </div>
             
             <div class="form-group">
-                <label>Fabricante del producto</label>
-                <select class="form-control select2" style="width: 100%;" id="fabricantes">
-                  <option>Dell</option>
-                  <option>HP</option>
-                  <option>Toshiva</option>
-                  <option>Nuevo fabricante</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="manofacturerName">Nuevo fabricante</label>
-                <input type="text" class="form-control" id="manofacturerName" name="manofacturerName" placeholder="Nombre del fabricante del producto" disabled>
-            </div>
-
-            <div class="form-group">
-                <label for="code">Codigo</label>
-                <input type="text" class="form-control" id="code" name="code" placeholder="X000000000">
-            </div>
-            
-            <div class="form-group">
-                <label for="exampleInputFile">Imagen del producto</label>
+                <label for="exampleInputFile">Imagen de la oferta</label>
                 <input type="file" id="exampleInputFile">
 
-                <p class="help-block">Seleccione una imagen del producto</p>
+                <p class="help-block">Seleccione una imagen de la oferta</p>
             </div>
             
-
         </div>
     
 
