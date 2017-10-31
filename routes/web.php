@@ -1,5 +1,5 @@
 <?php
-
+use App\Manufacturer;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 // Products
 Route::get('/products/add', function () {
-    return view('/products/add');
+    $manufacturers = Manufacturer::all();
+    return view('/products/add')->with('manufacturers', $manufacturers);;
 })->middleware('auth');
 
 Route::get('/products/edit', function () {
@@ -39,6 +40,8 @@ Route::get('/products/add-complete', function () {
 Route::get('/products/update-complete', function () {
     return view('/products/return-update');
 })->middleware('auth');
+
+Route::post('/products/add','ProductsController@store' )->middleware('auth');
 
 // Deals
 

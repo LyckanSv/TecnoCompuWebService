@@ -150,6 +150,8 @@ return [
         'time'                  => 'hora',
         'subject'               => 'asunto',
         'message'               => 'mensaje',
+        'model'                 => 'modelo',
+        'manofacturerName'      => 'Fabricante del producto'
     ],
 
 ];

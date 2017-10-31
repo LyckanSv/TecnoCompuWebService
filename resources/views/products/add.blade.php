@@ -1,6 +1,6 @@
 @extends('adminlte::page') 
 
-@section('title', 'AdminLTE') 
+@section('title', 'Productos') 
 
 @section('content_header')
 <h1>Productos</h1>
@@ -12,45 +12,87 @@
     <div class="box-header with-border">
         <h3 class="box-title">Formulario para nuevo producto</h3>
     </div>
-  
+    @if(count($errors))
+        <div class="alert alert-danger container-fluid">
+            <div>
+                <h3><strong>Error!!!</strong></h3>
+                <p><strong>A continuacion se muestra la lista de errores:</strong></p>
+                <ul class="">
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            
+        </div>
+    @endif
 
-    <form role="form">
+    <form role="form" method="POST" action="{{url('/products/add')}}" enctype="multipart/form-data"  >
+         {{csrf_field()}}
         <div class="box-body">
-            <div class="form-group">
-                <label for="">Nombre</label>
+
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label for="name">Nombre</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Laptop Dell Inspiron">
+                @if ($errors->has('name'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+                @endif
             </div>
 
-            <div class="form-group">
-                  <label>Descripcion</label>
-                  <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripcion del producto (Caracteristicas tecnicas, visuales, contenido del producto, etc )"></textarea>
+
+
+            <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+                <label>Descripcion</label>
+                <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripcion del producto (Caracteristicas tecnicas, visuales, contenido del producto, etc )"></textarea>
+                @if ($errors->has('description'))
+                    <span class="help-block">
+                    <strong>{{ $errors->first('description') }}</strong>
+                    </span>
+                @endif
             </div>
             
             <div class="form-group">
                 <label>Fabricante del producto</label>
-                <select class="form-control select2" style="width: 100%;" id="fabricantes">
-                  <option>Dell</option>
-                  <option>HP</option>
-                  <option>Toshiva</option>
-                  <option>Nuevo fabricante</option>
+                <select class="form-control select2" style="width: 100%;" id="fabricantes" name="manufacturer_id">
+                    @foreach($manufacturers as $manufacturer)
+                    <option>{{$manufacturer->id}}-{{$manufacturer->name}}</option>
+                    @endforeach
+                    <option>Nuevo fabricante</option>
                 </select>
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group{{ $errors->has('manofacturerName') ? ' has-error' : '' }}">
                 <label for="manofacturerName">Nuevo fabricante</label>
-                <input type="text" class="form-control" id="manofacturerName" name="manofacturerName" placeholder="Nombre del fabricante del producto" disabled>
+                <input type="text" class="form-control" id="manofacturerName" name="manufacturer_name" placeholder="Nombre del fabricante del producto" disabled>
+                @if ($errors->has('manofacturerName'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('manofacturerName') }}</strong>
+                </span>
+                @endif
             </div>
 
-            <div class="form-group">
-                <label for="code">Codigo</label>
-                <input type="text" class="form-control" id="code" name="code" placeholder="X000000000">
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <label>Modelo</label>
+                <input type="text" class="form-control" id="model" name="model" placeholder="X000000000">
+                @if ($errors->has('model'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('model') }}</strong>
+                </span>
+                @endif
             </div>
             
-            <div class="form-group">
-                <label for="exampleInputFile">Imagen del producto</label>
-                <input type="file" id="exampleInputFile">
-
+            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+                <label for="image">Imagen del producto</label>
+                <input type="file" id="image" name="image">
                 <p class="help-block">Seleccione una imagen del producto</p>
+                @if ($errors->has('image'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('image') }}</strong>
+                </span>
+                @endif
             </div>
             
 
@@ -58,7 +100,7 @@
     
 
         <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Crear</button>
+            <button type="submit" class="btn btn-primary">Guardar producto</button>
         </div>
 
     </form>

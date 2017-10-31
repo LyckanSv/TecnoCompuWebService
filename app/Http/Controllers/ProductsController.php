@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Products;
+use App\Manufacturer;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -35,7 +36,37 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'description' => 'required|string',
+            'image' => 'required|image',
+            'model' => 'required'
+        ]);
+
+        $manufacturer = $request->manufacturer_id;
+        
+        if($manufacturer == 'Nuevo fabricante'){
+            $request->validate([
+               'manufacturer_name'=>'required|max:100' 
+            ]);
+            $manufacturer = (Manufacturer::create(['name'=>$request->manufacturer_name]))->id;
+        }
+        
+        $path = Storage::putFile('public/imgProducts', $request->file('image'));
+        $url = Storage::url($path);
+        $product = new Products;
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->picture_url = $url;
+        $product->picture_path = $path;
+        $product->manufacturer_id = $request->manufacturer_id;
+        $product->model = $request->model;
+        $product->likes = 0;
+        $product->searches = 0;
+        $product->save();
+
+        return View('/products/return-add');
     }
 
     /**
