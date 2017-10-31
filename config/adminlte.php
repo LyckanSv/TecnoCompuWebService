@@ -111,7 +111,7 @@ return [
         
         [
             'text'        => 'Inicio',
-            'url'         => '/dev',
+            'url'         => '/home',
             'icon'        => 'home',
         ],
 
