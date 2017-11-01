@@ -2,6 +2,7 @@
 use App\Manufacturer;
 use App\Products;
 use App\Deal;
+use App\Category;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,7 +11,9 @@ Route::get('/', function () {
 // Products
 Route::get('/products/add', function () {
     $manufacturers = Manufacturer::all();
-    return view('/products/add')->with('manufacturers', $manufacturers);
+    return view('/products/add')
+    ->with('manufacturers', $manufacturers)
+    ->with('categories', Category::all());
 })->middleware('auth');
 
 Route::get('/products/edit', function () {

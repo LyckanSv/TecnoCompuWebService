@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->string('model');
             $table->integer('likes');
             $table->integer('searches');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }
