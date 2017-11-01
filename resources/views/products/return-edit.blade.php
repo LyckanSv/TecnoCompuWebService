@@ -27,13 +27,14 @@
         </div>
     @endif
 
-    <form role="form" method="POST" action="{{url('/products/add')}}" enctype="multipart/form-data"  >
+    <form role="form" method="POST" action="{{url('/products/update')}}" enctype="multipart/form-data"  >
          {{csrf_field()}}
         <div class="box-body">
+            <input type="hidden" name="id" value="{{$product->id}}" />
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Laptop Dell Inspiron">
+                <input type="text" class="form-control" value="{{$product->name}}" id="name" name="name" placeholder="Laptop Dell Inspiron">
                 @if ($errors->has('name'))
                 <span class="help-block">
                     <strong>{{ $errors->first('name') }}</strong>
@@ -45,7 +46,9 @@
 
             <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                 <label>Descripcion</label>
-                <textarea class="form-control" rows="3" id="description" name="description" placeholder="Descripcion del producto (Caracteristicas tecnicas, visuales, contenido del producto, etc )"></textarea>
+                <textarea class="form-control"  rows="3" id="description" name="description" 
+                placeholder="Descripcion del producto (Caracteristicas tecnicas, visuales, 
+                contenido del producto, etc )">{{$product->description}}</textarea>
                 @if ($errors->has('description'))
                     <span class="help-block">
                     <strong>{{ $errors->first('description') }}</strong>
@@ -56,8 +59,13 @@
             <div class="form-group">
                 <label>Fabricante del producto</label>
                 <select class="form-control select2" style="width: 100%;" id="fabricantes" name="manufacturer_id">
+                    
                     @foreach($manufacturers as $manufacturer)
-                    <option>{{$manufacturer->id}}-{{$manufacturer->name}}</option>
+                        @if ($product->manufacturer_id === $manufacturer->id)
+                            <option selected="selected">{{$manufacturer->id}}-{{$manufacturer->name}}</option>
+                        @else
+                            <option>{{$manufacturer->id}}-{{$manufacturer->name}}</option>
+                        @endif
                     @endforeach
                     <option>Nuevo fabricante</option>
                 </select>
@@ -76,7 +84,7 @@
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label>Modelo</label>
-                <input type="text" class="form-control" id="model" name="model" placeholder="X000000000">
+                <input type="text" class="form-control" value="{{$product->model}}" id="model" name="model" placeholder="X000000000">
                 @if ($errors->has('model'))
                 <span class="help-block">
                     <strong>{{ $errors->first('model') }}</strong>

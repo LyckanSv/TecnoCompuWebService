@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('picture_url');
             $table->string('picture_path');
             $table->integer('manufacturer_id');
+            $table->string('model');
             $table->integer('likes');
             $table->integer('searches');
             $table->timestamps();

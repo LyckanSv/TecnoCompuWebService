@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Products;
 use App\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -46,11 +50,13 @@ class ProductsController extends Controller
 
         $manufacturer = $request->manufacturer_id;
         
-        if($manufacturer == 'Nuevo fabricante'){
+        if($manufacturer == 'Nuevo fabricante' || !isset($manufacturer)){
             $request->validate([
                'manufacturer_name'=>'required|max:100' 
             ]);
             $manufacturer = (Manufacturer::create(['name'=>$request->manufacturer_name]))->id;
+        }else{
+            $manufacturer = strpos($request->manufacturer_id, '-', 0);
         }
         
         $path = Storage::putFile('public/imgProducts', $request->file('image'));
@@ -60,13 +66,13 @@ class ProductsController extends Controller
         $product->description = $request->description;
         $product->picture_url = $url;
         $product->picture_path = $path;
-        $product->manufacturer_id = $request->manufacturer_id;
+        $product->manufacturer_id = $manufacturer;
         $product->model = $request->model;
         $product->likes = 0;
         $product->searches = 0;
         $product->save();
 
-        return View('/products/return-add');
+        return View('/products/return-add')->with('product', $product);
     }
 
     /**
@@ -86,9 +92,12 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
-    {
-        //
+    public function edit($id)
+    {   
+        
+        return View('/products/return-edit')
+        ->with('product',Products::find($id))
+        ->with('manufacturers', $manufacturers = Manufacturer::all());
     }
 
     /**
@@ -98,9 +107,46 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255|string',
+            'description' => 'required|string',
+            'model' => 'required'
+        ]);
+
+        $manufacturer = $request->manufacturer_id;
+        
+        if($manufacturer == 'Nuevo fabricante' || !isset($manufacturer)){
+            $request->validate([
+               'manufacturer_name'=>'required|max:100' 
+            ]);
+            $manufacturer = (Manufacturer::create(['name'=>$request->manufacturer_name]))->id;
+        }else{
+            $manufacturer = strpos($request->manufacturer_id, '-', 0);
+        }
+
+        $product = Products::find($request->id);
+
+        if (!empty($request->file('image'))) {
+            $path = Storage::putFile('public/imgProducts', $request->file('image'));
+            $url = Storage::url($path);
+            $product->picture_url = $url;
+            $product->picture_path = $path;
+        }
+        
+        
+        
+        $product->name = $request->name;
+        $product->description = $request->description;
+
+        $product->manufacturer_id = $manufacturer;
+        $product->model = $request->model;
+        $product->likes = 0;
+        $product->searches = 0;
+        $product->save();
+
+        return View('/products/return-add')->with('product', $product);
     }
 
     /**
@@ -109,8 +155,14 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
-        //
+        $product = Products::find($id);
+        if($product->delete()){
+            $product = Products::all();
+            return view('/products/edit')->with('products', $product);
+            
+        }
+
     }
 }

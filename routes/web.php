@@ -1,15 +1,7 @@
 <?php
 use App\Manufacturer;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Products;
+use App\Deal;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,15 +10,17 @@ Route::get('/', function () {
 // Products
 Route::get('/products/add', function () {
     $manufacturers = Manufacturer::all();
-    return view('/products/add')->with('manufacturers', $manufacturers);;
+    return view('/products/add')->with('manufacturers', $manufacturers);
 })->middleware('auth');
 
 Route::get('/products/edit', function () {
-    return view('/products/edit');
+    $product = Products::all();
+    return view('/products/edit')->with('products', $product);
 })->middleware('auth');
 
 Route::get('/products/show', function () {
-    return view('/products/show');
+    $product = Products::all();
+    return view('/products/show')->with('products', $product);
 })->middleware('auth');
 
 Route::get('/products/update', function () {
@@ -42,19 +36,24 @@ Route::get('/products/update-complete', function () {
 })->middleware('auth');
 
 Route::post('/products/add','ProductsController@store' )->middleware('auth');
+Route::get('/products/delete/{id}','ProductsController@destroy' )->middleware('auth');
+Route::get('/products/edit/{id}','ProductsController@edit' )->middleware('auth');
+Route::post('/products/update','ProductsController@update' )->middleware('auth');
+
 
 // Deals
 
 Route::get('/deals/add', function () {
-    return view('/deals/add');
+    $product = Products::all();
+    return view('/deals/add')->with('products', $product);
 })->middleware('auth');
 
 Route::get('/deals/edit', function () {
-    return view('/deals/edit');
+    return view('/deals/edit')->with('deals', Deal::all() );
 })->middleware('auth');
 
 Route::get('/deals/show', function () {
-    return view('/deals/show');
+    return view('/deals/show')->with('deals', Deal::all() );
 })->middleware('auth');
 
 Route::get('/deals/update', function () {
@@ -68,6 +67,11 @@ Route::get('/deals/add-complete', function () {
 Route::get('/deals/update-complete', function () {
     return view('/deals/return-update');
 })->middleware('auth');
+
+Route::post('/deals/add','DealsController@store' )->middleware('auth');
+Route::get('/deals/delete/{id}','DealsController@destroy' )->middleware('auth');
+Route::get('/deals/edit/{id}','DealsController@edit' )->middleware('auth');
+Route::post('/deals/update','DealsController@update' )->middleware('auth');
 
 // Users
 

@@ -16,9 +16,10 @@
             <table id="productsTable" class="table table-bordered table-striped">
                 <thead> 
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Fabricante</th>
-                        <th>Codigo</th>
+                        <th>Modelo</th>
                         <th>Descripcion</th>
                         <th>Busquedas</th>
                         <th>Likes</th>
@@ -26,25 +27,30 @@
                 </thead>
                     
                 <tbody>
+                    @foreach($products as $product)
                     <tr>
-                        <td>Nombre</td>
-                        <td>Fabricante</td>
-                        <td>Codigo</td>
-                        <td>Descripcion</td>
-                        <td>Busquedas</td>
-                        <td>Likes</td>
-                    </tr>
+                        <td>{{$product->id}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{App\Manufacturer::find($product->manufacturer_id)->name}}</td>
+                        <td>{{$product->model}}</td>
+                        <td>{{$product->description}}</td>
+                        <td>{{$product->searches}}</td>
+                        <td>{{$product->likes}}</td>
                         
+                    </tr>
+                    @endforeach
+    
                 </tbody>
                     
                 <tfoot>
                     <tr>
-                    <th>Nombre</th>
-                    <th>Fabricante</th>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Busquedas</th>
-                    <th>Likes</th>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Descripcion</th>
+                        <th>Busquedas</th>
+                        <th>Likes</th>
                     </tr>
                 </tfoot>
 

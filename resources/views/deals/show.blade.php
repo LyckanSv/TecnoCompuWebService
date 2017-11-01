@@ -26,14 +26,17 @@
                 </thead>
                     
                 <tbody>
+                    @foreach($deals as $deal)
                     <tr>
-                        <td>1</td>
-                        <td>Titulo</td>
-                        <td>Subtitulo</td>
-                        <td>Descripcion</td>
-                        <td>Likes</td>
-                        <td>Imagen</td>
+                        <td>{{$deal->id}}</td>
+                        <td>{{$deal->title}}</td>
+                        <td>{{$deal->subtitle}}</td>
+                        <td>{{$deal->description}}</td>
+                        <td>{{$deal->product_id}}</td>
+                        <td>{{$deal->likes}}</td>
+                        
                     </tr>
+                    @endforeach
                         
                 </tbody>
                     

@@ -17,6 +17,7 @@
             <table id="productsTable" class="table table-bordered table-striped">
                 <thead> 
                     <tr>
+                        <th>Id</th>
                         <th>Nombre</th>
                         <th>Fabricante</th>
                         <th>Codigo</th>
@@ -28,23 +29,27 @@
                 </thead>
                     
                 <tbody>
+                    @foreach($products as $product)
                     <tr>
-                        <td>Nombre</td>
-                        <td>Fabricante</td>
-                        <td>Codigo</td>
-                        <td>Descripcion</td>
-                        <td>Busquedas</td>
-                        <td>Likes</td>
+                        <td>{{$product->id}}</td>
+                        <td>{{$product->name}}</td>
+                        <td>{{App\Manufacturer::find($product->manufacturer_id)->name}}</td>
+                        <td>{{$product->model}}</td>
+                        <td>{{$product->description}}</td>
+                        <td>{{$product->searches}}</td>
+                        <td>{{$product->likes}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary"> Editar </a>
-                            <a href="#" class="btn btn-danger"> Borrar </a>
+                            <a href="{{url('/products/edit/'.$product->id)}}" class="btn btn-primary"> Editar </a>
+                            <a href="{{url('/products/delete/'.$product->id)}}" class="btn btn-danger"> Borrar </a>
                         </td>
                     </tr>
-                        
+                    @endforeach
+                       
                 </tbody>
                     
                 <tfoot>
                     <tr>
+                    <th>Id</th>
                     <th>Nombre</th>
                     <th>Fabricante</th>
                     <th>Codigo</th>

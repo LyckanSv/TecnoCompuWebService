@@ -21,23 +21,28 @@
                         <th>Titulo</th>
                         <th>Subtitulo</th>
                         <th>Descripcion</th>
+                        <th>Producto Id</th>
                         <th>Likes</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                     
                 <tbody>
+                    @foreach($deals as $deal)
                     <tr>
-                        <td>1</td>
-                        <td>Titulo</td>
-                        <td>Subtitulo</td>
-                        <td>Descripcion</td>
-                        <td>Likes</td>
+                        <td>{{$deal->id}}</td>
+                        <td>{{$deal->title}}</td>
+                        <td>{{$deal->subtitle}}</td>
+                        <td>{{$deal->description}}</td>
+                        <td>{{$deal->product_id}}</td>
+                        <td>{{$deal->likes}}</td>
                         <td>
-                            <a href="#" class="btn btn-primary"> Editar </a>
-                            <a href="#" class="btn btn-danger"> Borrar </a>
+                            <a href="{{url('/deals/edit/'.$deal->id)}}" class="btn btn-primary"> Editar </a>
+                            <a href="{{url('/deals/delete/'.$deal->id)}}" class="btn btn-danger"> Borrar </a>
                         </td>
                     </tr>
+                    @endforeach
+                    
                         
                 </tbody>
                     
@@ -47,6 +52,7 @@
                         <th>Titulo</th>
                         <th>Subtitulo</th>
                         <th>Descripcion</th>
+                        <th>Producto Id</th>
                         <th>Likes</th>
                         <th>Opciones</th>
                     </tr>
