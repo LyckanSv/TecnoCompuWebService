@@ -20,6 +20,7 @@
                         <th>Id</th>
                         <th>Nombre</th>
                         <th>Fabricante</th>
+                        <th>Categoria</th>
                         <th>Codigo</th>
                         <th>Descripcion</th>
                         <th>Busquedas</th>
@@ -34,6 +35,7 @@
                         <td>{{$product->id}}</td>
                         <td>{{$product->name}}</td>
                         <td>{{App\Manufacturer::find($product->manufacturer_id)->name}}</td>
+                        <td>{{App\Category::find($product->category_id)->name}}</td>
                         <td>{{$product->model}}</td>
                         <td>{{$product->description}}</td>
                         <td>{{$product->searches}}</td>
@@ -49,14 +51,15 @@
                     
                 <tfoot>
                     <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Fabricante</th>
-                    <th>Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Busquedas</th>
-                    <th>Likes</th>
-                    <th>Opciones</th>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Fabricante</th>
+                        <th>Categoria</th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
+                        <th>Busquedas</th>
+                        <th>Likes</th>
+                        <th>Opciones</th>
                     </tr>
                 </tfoot>
 

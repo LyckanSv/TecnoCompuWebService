@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Products;
 use App\Manufacturer;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -56,7 +57,20 @@ class ProductsController extends Controller
             ]);
             $manufacturer = (Manufacturer::create(['name'=>$request->manufacturer_name]))->id;
         }else{
-            $manufacturer = strpos($request->manufacturer_id, '-', 0);
+            $posicion_coincidencia = strpos($request->manufacturer_id, '-', 0);
+            $manufacturer = substr($request->manufacturer_id, 0, $posicion_coincidencia);
+        }
+
+        $category = $request->category_id;
+
+        if($category == 'Nueva categoria' || !isset($category)){
+            $request->validate([
+               'category_name'=>'required|max:100' 
+            ]);
+            $category = (Category::create(['name'=>$request->category_name]))->id;
+        }else{
+            $posicion_coincidencia = strpos($request->category_id, '-', 0);
+            $category = substr($request->category_id, 0, $posicion_coincidencia);
         }
         
         $path = Storage::putFile('public/imgProducts', $request->file('image'));
@@ -67,6 +81,7 @@ class ProductsController extends Controller
         $product->picture_url = $url;
         $product->picture_path = $path;
         $product->manufacturer_id = $manufacturer;
+        $product->category_id = $category;
         $product->model = $request->model;
         $product->likes = 0;
         $product->searches = 0;
@@ -97,7 +112,8 @@ class ProductsController extends Controller
         
         return View('/products/return-edit')
         ->with('product',Products::find($id))
-        ->with('manufacturers', $manufacturers = Manufacturer::all());
+        ->with('manufacturers', $manufacturers = Manufacturer::all())
+        ->with('categories', Category::all());
     }
 
     /**
@@ -123,8 +139,21 @@ class ProductsController extends Controller
             ]);
             $manufacturer = (Manufacturer::create(['name'=>$request->manufacturer_name]))->id;
         }else{
-            $manufacturer = strpos($request->manufacturer_id, '-', 0);
+            $posicion_coincidencia = strpos($request->manufacturer_id, '-', 0);
+            $manufacturer = substr($request->manufacturer_id, 0, $posicion_coincidencia);
         }
+
+        $category = $request->category_id;
+        
+                if($category == 'Nueva categoria' || !isset($category)){
+                    $request->validate([
+                       'category_name'=>'required|max:100' 
+                    ]);
+                    $category = (Category::create(['name'=>$request->category_name]))->id;
+                }else{
+                    $posicion_coincidencia = strpos($request->category_id, '-', 0);
+                    $category = substr($request->category_id, 0, $posicion_coincidencia);
+                }
 
         $product = Products::find($request->id);
 
@@ -134,13 +163,12 @@ class ProductsController extends Controller
             $product->picture_url = $url;
             $product->picture_path = $path;
         }
-        
-        
-        
+         
         $product->name = $request->name;
         $product->description = $request->description;
 
         $product->manufacturer_id = $manufacturer;
+        $product->category_id = $category;
         $product->model = $request->model;
         $product->likes = 0;
         $product->searches = 0;

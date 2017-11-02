@@ -82,6 +82,27 @@
                 @endif
             </div>
 
+            <div class="form-group">
+                <label>Categorias</label>
+                <select class="form-control select2" style="width: 100%;" id="categories" name="category_id">
+                    @foreach($categories as $category)
+                    <option>{{$category->id}}-{{$category->name}}</option>
+                    @endforeach
+                    <option>Nueva categoria</option>
+                </select>
+            </div>
+
+
+            <div class="form-group{{ $errors->has('categoryName') ? ' has-error' : '' }}">
+                <label for="categoryName">Nuevo categoria</label>
+                <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Nombre de la nueva categoria" disabled>
+                @if ($errors->has('categoryName'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('categoryName') }}</strong>
+                </span>
+                @endif
+            </div>
+
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label>Modelo</label>
                 <input type="text" class="form-control" value="{{$product->model}}" id="model" name="model" placeholder="X000000000">
@@ -133,23 +154,37 @@
 
 
 
-  $(function () {
+    $(function () {
     //Initialize Select2 Elements
-    $('.select2').select2();
+        $('.select2').select2();
 
-    $('#fabricantes').on('change', function() {
-        seleccion = this.value;
+        $('#fabricantes').on('change', function() {
+            seleccion = this.value;
 
-        if(this.value === "Nuevo fabricante"){
-            console.log('desactive');
-            $('#manufacturerName').prop("disabled", false);
-        }else{
-            console.log('active');
-            $('#manufacturerName').prop("disabled", true);
-        }
-    })
+            if(this.value === "Nuevo fabricante"){
+                console.log('desactive');
+                $('#manufacturerName').prop("disabled", false);
+            }else{
+                console.log('active');
+                $('#manufacturerName').prop("disabled", true);
+            }
+        })
+
+        
+
+        $('#categories').on('change', function() {
+            seleccion2 = this.value;
+
+            if(this.value === "Nueva categoria"){
+                console.log('desactive');
+                $('#categoryName').prop("disabled", false);
+            }else{
+                console.log('active');
+                $('#categoryName').prop("disabled", true);
+            }
+        })
     
-  })
+    })
 </script>
 
 

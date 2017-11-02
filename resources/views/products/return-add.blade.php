@@ -16,8 +16,11 @@
     <p><strong> Modelo</strong> </p>
     <p>{{$product->model}}</p>
 
-    <p><strong> fabricante</strong></p>
-    <p>{{App\Manufacturer::find($product->manufacturer_id)}}</p>
+    <p><strong> Fabricante</strong></p>
+    <p>{{App\Manufacturer::find($product->manufacturer_id)->name}}</p>
+
+    <p><strong> Categoria</strong></p>
+    <p>{{App\Category::find($product->category_id)->name}}</p>
     
     <p><strong>Ruta de la imagen</strong></p>
     <p>{{$product->picture_url}}</p>

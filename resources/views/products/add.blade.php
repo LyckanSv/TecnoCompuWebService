@@ -87,7 +87,7 @@
 
             <div class="form-group{{ $errors->has('categoryName') ? ' has-error' : '' }}">
                 <label for="categoryName">Nuevo categoria</label>
-                <input type="text" class="form-control" id="categoryName" name="categoryName" placeholder="Nombre de la nueva categoria" disabled>
+                <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Nombre de la nueva categoria" disabled>
                 @if ($errors->has('categoryName'))
                 <span class="help-block">
                     <strong>{{ $errors->first('categoryName') }}</strong>
@@ -151,42 +151,37 @@
         }
     })
 
-
-
-
-
-
-  $(function () {
+    $(function () {
     //Initialize Select2 Elements
-    $('.select2').select2();
+        $('.select2').select2();
 
-    $('#fabricantes').on('change', function() {
-        seleccion = this.value;
+        $('#fabricantes').on('change', function() {
+            seleccion = this.value;
 
-        if(this.value === "Nuevo fabricante"){
-            console.log('desactive');
-            $('#manufacturerName').prop("disabled", false);
-        }else{
-            console.log('active');
-            $('#manufacturerName').prop("disabled", true);
-        }
+            if(this.value === "Nuevo fabricante"){
+                console.log('desactive');
+                $('#manufacturerName').prop("disabled", false);
+            }else{
+                console.log('active');
+                $('#manufacturerName').prop("disabled", true);
+            }
+        })
+
+        
+
+        $('#categories').on('change', function() {
+            seleccion2 = this.value;
+
+            if(this.value === "Nueva categoria"){
+                console.log('desactive');
+                $('#categoryName').prop("disabled", false);
+            }else{
+                console.log('active');
+                $('#categoryName').prop("disabled", true);
+            }
+        })
+        
     })
-
-    
-
-    $('#categories').on('change', function() {
-        seleccion2 = this.value;
-
-        if(this.value === "Nuevo categoria"){
-            console.log('desactive');
-            $('#categoryName').prop("disabled", false);
-        }else{
-            console.log('active');
-            $('#categoryName').prop("disabled", true);
-        }
-    })
-    
-  })
 </script>
 
 
