@@ -73,9 +73,21 @@ class DealsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
-    {
-        //
+    public function show()
+    {   
+        $pool = [];
+        $deals = Deal::all();
+        foreach ($deals as $deal) {
+            $temp = [
+                'title' => $deal->title,
+                'subtitle' => $deal->subtitle,
+                'image_url' => $deal->image_url,
+                'description' => $deal->description
+            ];
+
+            array_push($pool, $temp);
+        }
+        return Array('deals'=>$pool);
     }
 
     /**

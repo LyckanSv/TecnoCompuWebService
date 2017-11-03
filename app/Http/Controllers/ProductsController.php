@@ -98,7 +98,24 @@ class ProductsController extends Controller
      */
     public function show(Products $products)
     {
-        //
+        $pool = [];
+        $products = Products::all();
+        foreach ($products as $product ) {
+            $temp = [
+                'name' => $product->name,
+                'description'=> $product->description,
+                'picture_url'=> $product->picture_url,
+                'manufacturer'=> Manufacturer::find($product->manufacturer_id)->name,
+                'model'=> $product->model,
+                'likes'=> $product->likes,
+                'searches'=> $product->searches,
+                'category_id'=> Category::find($product->category_id)->name
+            ];
+
+            array_push($pool, $temp);
+        }
+
+        return Array('products'=>$pool);
     }
 
     /**
