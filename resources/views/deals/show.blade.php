@@ -21,7 +21,6 @@
                         <th>Subtitulo</th>
                         <th>Descripcion</th>
                         <th>Likes</th>
-                        <th>Imagen</th>
                     </tr>
                 </thead>
                     
@@ -32,7 +31,6 @@
                         <td>{{$deal->title}}</td>
                         <td>{{$deal->subtitle}}</td>
                         <td>{{$deal->description}}</td>
-                        <td>{{$deal->product_id}}</td>
                         <td>{{$deal->likes}}</td>
                         
                     </tr>
@@ -46,8 +44,7 @@
                         <th>Titulo</th>
                         <th>Subtitulo</th>
                         <th>Descripcion</th>
-                        <th>Likes</th>
-                        <th>Imagen</th>
+                        <th>likes</th>
                     </tr>
                 </tfoot>
 

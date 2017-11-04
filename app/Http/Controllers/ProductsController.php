@@ -67,7 +67,7 @@ class ProductsController extends Controller
             $request->validate([
                'category_name'=>'required|max:100' 
             ]);
-            $category = (Category::create(['name'=>$request->category_name]))->id;
+            $category = (Category::create(['name'=>$request->category_name, 'searches'=> 0]))->id;
         }else{
             $posicion_coincidencia = strpos($request->category_id, '-', 0);
             $category = substr($request->category_id, 0, $posicion_coincidencia);
@@ -84,7 +84,6 @@ class ProductsController extends Controller
         $product->category_id = $category;
         $product->model = $request->model;
         $product->likes = 0;
-        $product->searches = 0;
         $product->save();
 
         return View('/products/return-add')->with('product', $product);
@@ -108,7 +107,6 @@ class ProductsController extends Controller
                 'manufacturer'=> Manufacturer::find($product->manufacturer_id)->name,
                 'model'=> $product->model,
                 'likes'=> $product->likes,
-                'searches'=> $product->searches,
                 'category_id'=> Category::find($product->category_id)->name
             ];
 
@@ -166,7 +164,7 @@ class ProductsController extends Controller
                     $request->validate([
                        'category_name'=>'required|max:100' 
                     ]);
-                    $category = (Category::create(['name'=>$request->category_name]))->id;
+                    $category = (Category::create(['name'=>$request->category_name, 'searches'=> 0]))->id;
                 }else{
                     $posicion_coincidencia = strpos($request->category_id, '-', 0);
                     $category = substr($request->category_id, 0, $posicion_coincidencia);
@@ -188,7 +186,6 @@ class ProductsController extends Controller
         $product->category_id = $category;
         $product->model = $request->model;
         $product->likes = 0;
-        $product->searches = 0;
         $product->save();
 
         return View('/products/return-add')->with('product', $product);
@@ -209,5 +206,19 @@ class ProductsController extends Controller
             
         }
 
+    }
+
+    public function addLike($id){
+        $product = Products::find($id);
+        $product->likes +=1;
+        $product->save();
+        return Array('return'=> 'ok');
+    }
+
+    public function addSearch($id){
+        $category = Category::find($id);
+        $category->searches +=1;
+        $category->save();
+        return Array('return'=> 'ok');
     }
 }

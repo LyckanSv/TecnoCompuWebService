@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->integer('manufacturer_id');
             $table->string('model');
             $table->integer('likes');
-            $table->integer('searches');
             $table->integer('category_id');
             $table->timestamps();
         });

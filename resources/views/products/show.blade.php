@@ -22,7 +22,6 @@
                         <th>Categoria</th>
                         <th>Modelo</th>
                         <th>Descripcion</th>
-                        <th>Busquedas</th>
                         <th>Likes</th>
                     </tr>
                 </thead>
@@ -36,7 +35,6 @@
                         <td>{{App\Category::find($product->category_id)->name}}</td>
                         <td>{{$product->model}}</td>
                         <td>{{$product->description}}</td>
-                        <td>{{$product->searches}}</td>
                         <td>{{$product->likes}}</td>
                         
                     </tr>
@@ -52,7 +50,6 @@
                         <th>Categoria</th>
                         <th>Modelo</th>
                         <th>Descripcion</th>
-                        <th>Busquedas</th>
                         <th>Likes</th>
                     </tr>
                 </tfoot>

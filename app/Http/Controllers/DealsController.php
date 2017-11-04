@@ -152,8 +152,15 @@ class DealsController extends Controller
         $deal = Deal::find($id);
         if($deal->delete()){
             return view('/deals/edit')->with('deals', Deal::all());
-            
+
         }
 
+    }
+
+    public function addLike($id){
+        $deal = Deal::find($id);
+        $deal->likes += 1;
+        $deal->save();
+        return Array('return'=> 'ok'); 
     }
 }
